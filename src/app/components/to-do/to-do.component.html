@@ -1,0 +1,12 @@
+<div class="to-do" [formGroup]="form">
+  <button class="btn-add" mat-mini-fab color="warn" (click)="addTask()">Add</button>
+  <div class="wrapper-item-to-do">
+    <div class="container-item" formArrayName="tasks" *ngFor="let task of form.get('tasks').controls; let i = index;">
+      <mat-card>
+      <div class="wrapper-item">
+        <input matInput [formGroupName]="i" name = "text" type="text" placeholder="Enter a task for this card …"/>
+      </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

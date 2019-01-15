@@ -1,0 +1,43 @@
+@import "../../../assets/scss/_variables";
+
+.to-do {
+  width: 270px;
+  background-color: $light-grey;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+  display: flex;
+  margin-right: 30px;
+
+  .wrapper-item-to-do {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-add {
+    margin-right: 20px;
+  }
+
+  .mat-card {
+    margin-bottom: 10px;
+  }
+
+  .wrapper-item {
+  }
+}
+
+.to-do::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background-color: $light-grey;
+}
+
+.to-do::-webkit-scrollbar {
+  height: 10px;
+  width: 5px;
+}
+
+.to-do::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px $rgba-dark;
+  background-color: $dark-blue;
+}
