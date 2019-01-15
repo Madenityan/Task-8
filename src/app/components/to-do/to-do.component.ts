@@ -7,6 +7,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./to-do.component.scss']
 })
 export class ToDoComponent implements OnInit {
+  
   form;
   public tasks = [];
 
@@ -25,14 +26,9 @@ export class ToDoComponent implements OnInit {
     return this.formBuilder.control('');
   }
 
-  submit() {
-    this.tasks.push(this.form.value.task);
-    this.form.reset();
-  }
-
-  deleteTask(index: number) {
-    this.tasks.splice(index, 1);
-  }
+  // deleteTask(index: number) {
+  //   this.form.controls['tasks'].splice(index, 1);
+  // }
 
   ngOnInit() {
   }

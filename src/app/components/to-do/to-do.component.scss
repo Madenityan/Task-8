@@ -20,9 +20,13 @@
 
   .mat-card {
     margin-bottom: 10px;
+    padding: 10px;
   }
 
   .wrapper-item {
+    div {
+      display: flex;
+    }
   }
 }
 

@@ -4,7 +4,12 @@
     <div class="container-item" formArrayName="tasks" *ngFor="let task of form.get('tasks').controls; let i = index;">
       <mat-card>
       <div class="wrapper-item">
-        <input matInput [formGroupName]="i" name = "text" type="text" placeholder="Enter a task for this card …"/>
+        <div>
+          <input matInput [formGroupName]="i" name = "text" type="text" placeholder="Enter a task for this card …"/>
+          <button mat-icon-button (click)="deleteTask(i)">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
       </div>
       </mat-card>
     </div>
