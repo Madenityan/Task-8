@@ -7,6 +7,39 @@
     background-size: cover;
     height: 100vh;
   }
+
+  .wrapper-main {
+    display: flex;
+    align-items: baseline;
+    padding: 10px;
+    overflow-x: auto;
+    height: calc(100vh - 90px);
+  }
+
+  .wrapper-main::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: $light-grey;
+  }
+
+  .wrapper-main::-webkit-scrollbar {
+    height: 5px;
+    width: 3px;
+  }
+
+  .wrapper-main::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px $rgba-dark;
+    background-color: $rgba-dark;
+  }
+
+  .main {
+    display: flex;
+    margin-right: 20px;
+  }
+
+  .btn-add-list {
+    background-color: $green;
+  }
 }
 
 .topMenu {

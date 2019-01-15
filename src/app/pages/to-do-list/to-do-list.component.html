@@ -33,5 +33,13 @@
         </mat-menu>
       </div>
     </header>
+    <div class="wrapper-main">
+      <div class="main">
+        <app-to-do *ngFor="let list of lists;"></app-to-do>
+      </div>
+      <div>
+        <button class="btn-add-list" mat-button mat-raised-button type="button" (click)="addNewList()"> + Add another list</button>
+      </div>
+  </div>
   </div>
 </div>
