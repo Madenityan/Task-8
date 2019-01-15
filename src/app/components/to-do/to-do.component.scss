@@ -1,6 +1,7 @@
 @import "../../../assets/scss/_variables";
 
 .to-do {
+  position: relative;
   width: 270px;
   background-color: $light-grey;
   padding: 10px;
@@ -16,6 +17,10 @@
 
   .btn-add {
     margin-right: 20px;
+    position: absolute;
+    left: 240px;
+    bottom: 10px;
+    z-index: 1;
   }
 
   .mat-card {
@@ -37,7 +42,7 @@
 
 .to-do::-webkit-scrollbar {
   height: 10px;
-  width: 5px;
+  width:7px;
 }
 
 .to-do::-webkit-scrollbar-thumb {
