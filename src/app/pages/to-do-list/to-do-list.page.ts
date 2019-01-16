@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-to-do-list',
-  templateUrl: './to-do-list.component.html',
-  styleUrls: ['./to-do-list.component.scss']
+  templateUrl: './to-do-list.page.html',
+  styleUrls: ['./to-do-list.page.scss']
 })
-export class ToDoListComponent implements OnInit {
+export class ToDoListPage implements OnInit {
   lists = [];
 
   constructor() { }

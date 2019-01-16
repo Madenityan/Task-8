@@ -5,7 +5,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToDoListComponent } from './pages/to-do-list/to-do-list.component';
+import { ToDoListPage } from './pages/to-do-list/to-do-list.page';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule} from '@angular/material';
 import { ToDoComponent } from './components/to-do/to-do.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -13,7 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    ToDoListComponent,
+    ToDoListPage,
     ToDoComponent
   ],
   imports: [
