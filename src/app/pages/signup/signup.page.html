@@ -1,0 +1,42 @@
+<div class="wrapper-signup">
+  <div class="container-signup">
+    <div class="title-form">
+      <h3>Create new account</h3>
+    </div>
+    <form [formGroup]="signUpForm" class="form">
+      <div class="form-row">
+        <i class="material-icons icon-form">
+          how_to_reg
+        </i>
+        <label for="name">
+          <input type="text" id="name" formControlName="name" name="name" placeholder="Name"/>
+        </label>
+        <label for="surname">
+          <input type="text" id="surname" formControlName="surname" name="surname" placeholder="Surname"/>
+        </label>
+      </div>
+      <div>
+        <i class="material-icons icon-form">
+          mail
+        </i>
+        <label for="email">
+          <input type="email" id="email" formControlName="email" name="email" placeholder="Email"/>
+        </label>
+      </div>
+      <div class="form-row">
+        <i class="material-icons icon-form">
+          fingerprint
+        </i>
+        <label for="phone">
+          <input type="tel" id="phone" formControlName="phone" name="phone" placeholder="Phone"/>
+        </label>
+        <label for="password">
+          <input type="password" id="password" formControlName="password" name="password" placeholder="Password"/>
+        </label>
+      </div>
+    </form>
+    <div class="wrapper-btn-form">
+      <button mat-raised-button color="primary" type="submit">Register Now</button>
+    </div>
+  </div>
+</div>
