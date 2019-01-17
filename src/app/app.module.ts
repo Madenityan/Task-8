@@ -11,6 +11,8 @@ import { ToDoComponent } from './components/to-do/to-do.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignupPage } from './pages/signup/signup.page';
 import { SigninPage } from './pages/signin/signin.page';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpService} from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,9 @@ import { SigninPage } from './pages/signin/signin.page';
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

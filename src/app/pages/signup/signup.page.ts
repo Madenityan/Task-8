@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { HttpService} from '../../services/http.service';
+import {UserForm} from '../../models/userForm';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-signup',
@@ -9,10 +13,11 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class SignupPage implements OnInit {
 
   public signUpForm: FormGroup;
+  public user: UserForm;
 
-  constructor(private formBuilder: FormBuilder) { }
-
+  constructor(private router: Router, private httpService: HttpService, private formBuilder: FormBuilder) { }
   ngOnInit() {
+
     this.signUpForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
@@ -22,7 +27,8 @@ export class SignupPage implements OnInit {
     });
   }
 
-  submit() {
-    console.log(this.signUpForm.value);
+  public submit() {
+    console.log(this.signUpForm, this.signUpForm.value);
+    this.httpService.registration(this.signUpForm.value).subscribe((data: UserForm) => this.user = data);
   }
 }
