@@ -1,0 +1,28 @@
+<div class="wrapper-signin">
+  <div class="container-signin">
+    <div class="title-form">
+      <h3>Login</h3>
+    </div>
+    <form (ngSubmit)="submitLogin()" [formGroup]="signInForm" class="form">
+      <mat-form-field>
+        <label for="email">
+          <input matInput type="email" id="email" formControlName="email" name="email" placeholder="Email"/>
+        </label>
+      </mat-form-field>
+      <mat-form-field>
+        <label for="password">
+          <input matInput type="password" id="password" formControlName="password" name="password" placeholder="Password"/>
+        </label>
+      </mat-form-field>
+      <div *ngIf="signInForm.controls['password'].invalid && (signInForm.controls['password'].dirty || signInForm.controls['password'].touched)">
+        <div class="error-message" *ngIf="signInForm.controls['password'].errors.required">
+          Password must be at least 8 characters
+        </div>
+      </div>
+      <div class="wrapper-btn-form">
+        <button mat-raised-button color="primary" type="submit">Sign in</button>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,47 @@
+@import "../../../assets/scss/_variables";
+
+.wrapper-signin {
+  font-family: $font-form;
+  background: $form-gradient;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
+  .container-signin {
+    background-color: $white;
+    border-radius: 5px;
+    width: 500px;
+    padding: 15px 0 15px;
+    margin: 0 auto;
+
+    .title-form {
+      text-align: center;
+      padding: 15px;
+      color: $blue;
+      font-size: 20px;
+      border-bottom: 1px solid $light-grey;
+    }
+
+    .wrapper-btn-form {
+      text-align: center;
+      padding:15px;
+      border-top: 1px solid $light-grey
+    }
+
+    .form {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      mat-form-field {
+        width: 300px;
+      }
+
+      .error-message {
+        font-size: 15px;
+        color: $red;
+      }
+    }
+  }
+}
