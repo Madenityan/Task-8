@@ -22,13 +22,17 @@ export class SignupPage implements OnInit {
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      phone: [''],
+      phone: ['', [Validators.required, Validators.minLength(8)], Validators],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   public submit() {
     console.log(this.signUpForm, this.signUpForm.value);
-    this.httpService.registration(this.signUpForm.value).subscribe((data: UserForm) => this.user = data);
+    this.httpService.registration(this.signUpForm.value).subscribe((data: {token: string}) => {
+      if (data.token) {
+        this.router.navigate(['/signin']);
+      }
+    });
   }
 }

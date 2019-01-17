@@ -18,7 +18,7 @@ export class SigninPage implements OnInit {
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
@@ -29,10 +29,12 @@ export class SigninPage implements OnInit {
 
   submitLogin() {
     this.httpService.login(this.signInForm.value).subscribe(
-      (data: UserForm) => {
+      (data: {token: string}) => {
         console.log(data);
-        this.user = data;
-        this.saveToken(data);
+        if (data.token) {
+          this.saveToken(data);
+          this.router.navigate(['/to-do-list']);
+        }
       });
   }
 }
