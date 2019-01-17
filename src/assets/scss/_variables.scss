@@ -1,16 +1,22 @@
 //Google fonts
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 
 //Fonts variable
 $font-title: 'Pacifico', cursive;
-
+$font-form: 'Nunito Sans', sans-serif;
 
 //Colors
 $white: #fff;
 $black:#000000;
 $light-grey: #dfe3e6;
 $dark-blue: #4675d2;
+$blue: #2e44d2;
 $rgba-dark: rgba(0,0,0,.3);
 $red: #FF0000;
 $green: #628051;
+$color-valid: #42A948;
+$color-invalid: #a94442;
 
+//Gradients
+$form-gradient: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(153,218,255,1)), color-stop(100%, rgba(0,128,128,1)));

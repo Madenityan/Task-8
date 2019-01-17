@@ -3,36 +3,46 @@
     <div class="title-form">
       <h3>Create new account</h3>
     </div>
-    <form [formGroup]="signUpForm" class="form">
-      <div class="form-row">
-        <i class="material-icons icon-form">
-          how_to_reg
-        </i>
-        <label for="name">
-          <input type="text" id="name" formControlName="name" name="name" placeholder="Name"/>
-        </label>
-        <label for="surname">
-          <input type="text" id="surname" formControlName="surname" name="surname" placeholder="Surname"/>
-        </label>
+    <form (ngSubmit)="submit()" [formGroup]="signUpForm" class="form">
+        <mat-form-field>
+          <label for="name">
+            <input matInput type="text" id="name" formControlName="name" name="name" placeholder="Name"/>
+          </label>
+        </mat-form-field>
+      <div *ngIf="signUpForm.controls['name'].invalid && (signUpForm.controls['name'].dirty || signUpForm.controls['name'].touched)">
+        <div class="error-message" *ngIf="signUpForm.controls['name'].errors.required">
+          Name is required.
+        </div>
       </div>
-      <div>
-        <i class="material-icons icon-form">
-          mail
-        </i>
-        <label for="email">
-          <input type="email" id="email" formControlName="email" name="email" placeholder="Email"/>
-        </label>
+        <mat-form-field>
+          <label for="surname">
+            <input matInput type="text" id="surname" formControlName="surname" name="surname" placeholder="Surname"/>
+          </label>
+        </mat-form-field>
+      <div *ngIf="signUpForm.controls['surname'].invalid && (signUpForm.controls['surname'].dirty || signUpForm.controls['surname'].touched)">
+        <div class="error-message" *ngIf="signUpForm.controls['surname'].errors.required">
+          Surname is required.
+        </div>
       </div>
-      <div class="form-row">
-        <i class="material-icons icon-form">
-          fingerprint
-        </i>
-        <label for="phone">
-          <input type="tel" id="phone" formControlName="phone" name="phone" placeholder="Phone"/>
-        </label>
-        <label for="password">
-          <input type="password" id="password" formControlName="password" name="password" placeholder="Password"/>
-        </label>
+        <mat-form-field>
+          <label for="email">
+            <input matInput type="email" id="email" formControlName="email" name="email" placeholder="Email"/>
+          </label>
+          </mat-form-field>
+        <mat-form-field>
+          <label for="phone">
+            <input matInput type="tel" id="phone" formControlName="phone" name="phone" placeholder="Phone"/>
+          </label>
+        </mat-form-field>
+        <mat-form-field>
+          <label for="password">
+            <input matInput type="password" id="password" formControlName="password" name="password" placeholder="Password"/>
+          </label>
+        </mat-form-field>
+      <div *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)">
+        <div class="error-message" *ngIf="signUpForm.controls['password'].errors.required">
+          Password must be at least 8 characters
+        </div>
       </div>
     </form>
     <div class="wrapper-btn-form">

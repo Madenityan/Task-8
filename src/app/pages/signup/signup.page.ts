@@ -14,11 +14,15 @@ export class SignupPage implements OnInit {
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
-      name: [''],
-      surname: [''],
+      name: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       phone: [''],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
+  }
+
+  submit() {
+    console.log(this.signUpForm.value);
   }
 }

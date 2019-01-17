@@ -10,13 +10,15 @@ import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatIn
 import { ToDoComponent } from './components/to-do/to-do.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SignupPage } from './pages/signup/signup.page';
+import { SigninPage } from './pages/signin/signin.page';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToDoListPage,
     ToDoComponent,
-    SignupPage
+    SignupPage,
+    SigninPage
   ],
   imports: [
     BrowserModule,
