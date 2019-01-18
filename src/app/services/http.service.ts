@@ -16,4 +16,8 @@ export class HttpService {
   login(params) {
     return this.http.post(getUrl('login'), params);
   }
+
+  updateUserInfo(params, options) {
+    return this.http.put(getUrl('user'), params, options);
+  }
 }
