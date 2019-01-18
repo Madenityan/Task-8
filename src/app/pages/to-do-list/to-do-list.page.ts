@@ -25,4 +25,8 @@ export class ToDoListPage implements OnInit {
     this.router.navigate(['/signin']);
   }
 
+  regirect() {
+    this.router.navigate(['/profile']);
+  }
+
 }

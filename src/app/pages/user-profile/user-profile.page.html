@@ -1,3 +1,21 @@
-<p>
-  user-profile works!
-</p>
+<div class="wrapper-profile">
+  <div class="container-profile">
+    <header>
+      <h3>Personal data</h3>
+    </header>
+    <form (ngSubmit)="changeProfile()" [formGroup]="profileForm" class="form-profile">
+      <div class="profile-data">
+        <h4>Profile</h4>
+        <label for="name"> Name
+          <input type="text" id="name" formControlName="name" name="name">
+        </label>
+        <label for="password"> Password
+          <input type="password" id="password" formControlName="password" name="email">
+        </label>
+        <div>
+          <button mat-raised-button color="primary" type="submit">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

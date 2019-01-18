@@ -1,0 +1,56 @@
+@import "../../../assets/scss/variables";
+
+.wrapper-profile {
+  font-family: $font-form;
+  background: $form-gradient;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+
+  .container-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    h3 {
+      text-transform: uppercase;
+      font-size: 20px;
+      color: $blue;
+    }
+
+    .form-profile {
+
+      .profile-data {
+        margin-bottom: 20px;
+      }
+
+      .profile-data {
+        border: 1px solid $border-profile;
+        border-radius: 8px;
+        padding: 40px;
+        background-color: $white;
+
+        h4 {
+          color: $blue;
+          font-size: 20px;
+          margin: 0 0 15px;
+        }
+
+        label {
+          color: $green;
+        }
+
+        input {
+          border: none;
+          margin-bottom:15px;
+          border-bottom: 1px solid $border-profile;
+          outline: none;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
