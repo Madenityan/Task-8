@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-to-do-list',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ToDoListPage implements OnInit {
   lists = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -17,6 +18,11 @@ export class ToDoListPage implements OnInit {
     this.lists.push({
       tasks: []
     });
+  }
+
+  clearLocalStorage() {
+    localStorage.clear();
+    this.router.navigate(['/signin']);
   }
 
 }

@@ -3,8 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import {SignupPage} from './pages/signup/signup.page';
 import {ToDoListPage} from './pages/to-do-list/to-do-list.page';
 import {SigninPage} from './pages/signin/signin.page';
+import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
+  { path: '',
+    redirectTo: 'signup',
+    pathMatch: 'full'
+  },
   {
     path: 'signup',
     component: SignupPage
@@ -15,7 +20,8 @@ const routes: Routes = [
   },
   {
     path: 'to-do-list',
-    component: ToDoListPage
+    component: ToDoListPage,
+    canActivate: [AuthGuard]
   }
 ];
 

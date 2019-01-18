@@ -13,6 +13,8 @@ import { SignupPage } from './pages/signup/signup.page';
 import { SigninPage } from './pages/signin/signin.page';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/http.service';
+import {AuthGuard} from './auth/auth.guard';
+import { UserProfilePage } from './pages/user-profile/user-profile.page';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {HttpService} from './services/http.service';
     ToDoListPage,
     ToDoComponent,
     SignupPage,
-    SigninPage
+    SigninPage,
+    UserProfilePage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import {HttpService} from './services/http.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [HttpService],
+  providers: [HttpService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
