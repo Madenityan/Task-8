@@ -7,18 +7,26 @@ import {Router} from '@angular/router';
   styleUrls: ['./to-do-list.page.scss']
 })
 export class ToDoListPage implements OnInit {
+
   lists = [];
+  public condition:boolean = false;
 
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  addNewList() {
+  addNewTitle() {
     this.lists.push({
-      tasks: []
+      title: []
     });
   }
+
+  // addNewList() {
+  //   this.lists.push({
+  //     tasks: []
+  //   });
+  // }
 
   clearLocalStorage() {
     localStorage.clear();

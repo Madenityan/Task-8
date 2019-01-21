@@ -34,10 +34,11 @@
     </header>
     <div class="wrapper-main">
       <div class="main">
-        <app-to-do *ngFor="let list of lists;"></app-to-do>
+        <app-title-to-do *ngFor="let title of lists;"></app-title-to-do>
+        <!--<app-to-do *ngFor="let list of lists;"></app-to-do>-->
       </div>
       <div>
-        <button class="btn-add-list" mat-button mat-raised-button type="button" (click)="addNewList()"> + Add another list</button>
+        <button class="btn-add-list" mat-button mat-raised-button type="button" (click)="addNewTitle()"> + Add another list</button>
       </div>
   </div>
   </div>

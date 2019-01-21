@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/http.service';
 import {AuthGuard} from './auth/auth.guard';
 import { UserProfilePage } from './pages/user-profile/user-profile.page';
+import { TitleToDoComponent } from './components/title-to-do/title-to-do.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserProfilePage } from './pages/user-profile/user-profile.page';
     ToDoComponent,
     SignupPage,
     SigninPage,
-    UserProfilePage
+    UserProfilePage,
+    TitleToDoComponent
   ],
   imports: [
     BrowserModule,

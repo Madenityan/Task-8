@@ -15,8 +15,8 @@ export class ToDoComponent implements OnInit {
     this.form = this.formBuilder.group({
       tasks: this.formBuilder.array([ this.createTaskField() ])
     });
-    console.log(this.form);
   }
+  ngOnInit() {}
 
   addTask(): void {
     this.form.controls['tasks'].push(this.createTaskField());
@@ -25,12 +25,4 @@ export class ToDoComponent implements OnInit {
   createTaskField(): FormControl {
     return this.formBuilder.control('');
   }
-
-  // removeTask(index: number) {
-  //   this.form.controls.splice(index, 1);
-  // }
-
-  ngOnInit() {
-  }
-
 }

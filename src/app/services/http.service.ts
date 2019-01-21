@@ -20,4 +20,8 @@ export class HttpService {
   updateUserInfo(params, options) {
     return this.http.put(getUrl('user'), params, options);
   }
+
+  createToDo(params) {
+    return this.http.post(getUrl('todolist'), params);
+  }
 }
