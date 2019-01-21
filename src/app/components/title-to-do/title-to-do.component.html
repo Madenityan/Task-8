@@ -1,0 +1,12 @@
+<div class="wrapper-title-toDo">
+  <form [formGroup]="formTitle">
+    <div formArrayName="title" *ngFor="let title of formTitle.get('title').controls; let i = index;">
+      <mat-card>
+        <label for="title-to-do">
+          <input type="text" [formGroupName]="i" id="title-to-do" placeholder="Add title...">
+        </label>
+        <button mat-raised-button color="primary" type="button">Add list</button>
+      </mat-card>
+    </div>
+  </form>
+</div>
