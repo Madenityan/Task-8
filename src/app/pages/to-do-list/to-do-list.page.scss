@@ -37,10 +37,9 @@
   }
 
   .main {
-    display: flex;
 
-    app-title-to-do {
-      margin-right: 20px;
+    div {
+      display: flex;
     }
   }
 

@@ -10,6 +10,8 @@ export class TitleToDoComponent implements OnInit {
 
   formTitle;
   public title = [];
+  public lists = [];
+  public condition = true;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -27,4 +29,10 @@ export class TitleToDoComponent implements OnInit {
     return this.formBuilder.control('');
   }
 
+  addNewList() {
+    this.lists.push({
+      tasks: []
+    });
+    this.condition = !this.condition;
+  }
 }

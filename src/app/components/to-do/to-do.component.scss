@@ -3,12 +3,10 @@
 .to-do {
   position: relative;
   width: 270px;
-  background-color: $light-grey;
   padding: 10px;
   overflow-y: auto;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 205px);
   display: flex;
-  margin-right: 30px;
 
   .wrapper-item-to-do {
     display: flex;

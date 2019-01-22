@@ -9,8 +9,6 @@ import {Router} from '@angular/router';
 export class ToDoListPage implements OnInit {
 
   lists = [];
-  public condition:boolean = false;
-
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -21,12 +19,6 @@ export class ToDoListPage implements OnInit {
       title: []
     });
   }
-
-  // addNewList() {
-  //   this.lists.push({
-  //     tasks: []
-  //   });
-  // }
 
   clearLocalStorage() {
     localStorage.clear();
