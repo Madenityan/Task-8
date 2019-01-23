@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {HttpService} from '../../services/http.service';
 
 @Component({
   selector: 'app-title-to-do',
@@ -12,8 +13,9 @@ export class TitleToDoComponent implements OnInit {
   public title = [];
   public lists = [];
   public condition = true;
+  public hide = true;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private httpService: HttpService) { }
 
   ngOnInit() {
     this.formTitle = this.formBuilder.group({
@@ -27,6 +29,15 @@ export class TitleToDoComponent implements OnInit {
 
   createTitleField(): FormControl {
     return this.formBuilder.control('');
+  }
+
+  addNewTitle() {
+    this.httpService.createTitle(this.formTitle.value).subscribe((data) => {
+        console.log(data);
+      },
+      error => console.log(error)
+    );
+    // this.hide = !this.hide;
   }
 
   addNewList() {

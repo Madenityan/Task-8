@@ -8,7 +8,7 @@
           <button mat-icon-button>
             <mat-icon>clear</mat-icon>
           </button>
-          <input matInput [formGroupName]="i" name = "text" type="text" placeholder="Add task…"/>
+          <input matInput #myInput (click)="myInput.select()" [formGroupName]="i" name = "text" type="text" placeholder="Add task…"/>
         </div>
       </div>
       </mat-card>

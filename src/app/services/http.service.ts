@@ -21,7 +21,7 @@ export class HttpService {
     return this.http.put(getUrl('user'), params, options);
   }
 
-  createToDo(params) {
-    return this.http.post(getUrl('todolist'), params);
+  createTitle(params) {
+    return this.http.get(getUrl('todolist'), params);
   }
 }
