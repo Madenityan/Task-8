@@ -20,13 +20,13 @@ export class ToDoListPage implements OnInit {
     });
   }
 
-  clearLocalStorage() {
-    localStorage.clear();
-    this.router.navigate(['/signin']);
-  }
+clearLocalStorage() {
+  localStorage.clear();
+  this.router.navigate(['/signin']);
+}
 
-  regirect() {
-    this.router.navigate(['/profile']);
-  }
+regirect() {
+  this.router.navigate(['/profile']);
+}
 
 }

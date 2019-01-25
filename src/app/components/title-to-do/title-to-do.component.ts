@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {HttpService} from '../../services/http.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-title-to-do',
@@ -13,7 +14,6 @@ export class TitleToDoComponent implements OnInit {
   public title = [];
   public lists = [];
   public condition = true;
-  public hide = true;
 
   constructor(private formBuilder: FormBuilder, private httpService: HttpService) { }
 
@@ -31,19 +31,22 @@ export class TitleToDoComponent implements OnInit {
     return this.formBuilder.control('');
   }
 
-  addNewTitle() {
-    this.httpService.createTitle(this.formTitle.value).subscribe((data) => {
-        console.log(data);
-      },
-      error => console.log(error)
-    );
-    // this.hide = !this.hide;
-  }
-
   addNewList() {
-    this.lists.push({
-      tasks: []
-    });
+    const token = localStorage.getItem('token');
+    const options = {
+      headers: new HttpHeaders({
+        // 'Content-Type':  'application/json',
+        'x-apikey': token
+      })
+    };
+
+    this.httpService.get('todolist', options).subscribe((data => {
+      this.lists.push({
+        tasks: []
+      });
+      // this.lists = data;
+    }));
+
     this.condition = !this.condition;
   }
 }

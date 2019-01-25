@@ -1,11 +1,10 @@
 <div class="wrapper-title-toDo">
   <form [formGroup]="formTitle">
-    <div formArrayName="title" *ngFor="let title of formTitle.get('title').controls; let i = index;">
+    <div class="wrapper-form-title" formArrayName="title" *ngFor="let title of formTitle.get('title').controls; let i = index;">
       <label for="title-to-do">
         <input type="text" [formGroupName]="i" id="title-to-do" placeholder="Add title ...">
-        <button *ngIf="hide" class="btn-add" (click)="addNewTitle()" type="button">Add title</button>
+        <button *ngIf="condition" class="btn-title" type="button" (click)="addNewList()">Add new list ...</button>
       </label>
-      <button *ngIf="condition" class="btn-title" type="button" (click)=" addNewList()">Add another card ...</button>
       <app-to-do *ngFor="let list of lists;"></app-to-do>
     </div>
   </form>

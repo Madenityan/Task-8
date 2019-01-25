@@ -1,13 +1,37 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {getUrl} from '../../api/get-url';
+import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class HttpService {
-  constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient) {}
+
+  private headers: HttpHeaders;
+  private baseUrl = environment.baseUrl;
+
+  static objectToFormData(object: any): HttpParams {
+    let params = new HttpParams();
+    Object.keys(object).forEach(key => {
+      params = params.set(key, object[key]);
+    });
+    return params;
+  }
+  private setOptionsToHeader(options): any {
+    Object.keys(options).forEach(key => {
+      this.headers.append(key, options[key]);
+    });
+  }
+
+  constructor(private http: HttpClient) {
+    let headers = new HttpHeaders();
+    headers = headers.append('Accept', 'application/json');
+    this.headers = headers;
+  }
 
   registration(params) {
     return this.http.post(getUrl('registration'), params);
@@ -21,7 +45,20 @@ export class HttpService {
     return this.http.put(getUrl('user'), params, options);
   }
 
-  createTitle(params) {
-    return this.http.get(getUrl('todolist'), params);
+  // createTList(params) {
+  //   return this.http.get(getUrl('todolist'), params);
+  // }
+
+  public get(path: string, options?: {}): Observable<any> {
+    options = Object.assign({}, {headers: this.headers}, options);
+    return this.http.get(`${this.baseUrl}${path}`, options);
+  }
+
+  public post(path: string, body: any | null, options?: {}): Observable<any> {
+    if (options) {
+      this.setOptionsToHeader(options);
+    }
+    options = Object.assign({}, {headers: this.headers}, options);
+    return this.http.post(`${this.baseUrl}${path}`, body, options);
   }
 }
