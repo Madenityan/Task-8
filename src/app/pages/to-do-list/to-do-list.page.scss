@@ -14,69 +14,71 @@
     padding: 10px;
     overflow-x: auto;
     height: calc(100vh - 90px);
-
-    .wrapper-title {
-      margin-right: 25px;
-    }
-  }
-
-  .wrapper-main::-webkit-scrollbar-track {
-    border-radius: 3px;
-    background-color: $light-grey;
-  }
-
-  .wrapper-main::-webkit-scrollbar {
-    height: 5px;
-    width: 3px;
-  }
-
-  .wrapper-main::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    -webkit-box-shadow: inset 0 0 6px $rgba-dark;
-    background-color: $rgba-dark;
   }
 
   .main {
+    padding: 0 30px;
 
-    div {
-      display: flex;
-    }
-  }
-
-  .btn-add-list {
-    background-color: $green;
-  }
-}
-
-.topMenu {
-  background: rgba(0,0,0,.35);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-
-  h1 {
-    font-family: $font-title;
-    font-size: 30px;
-    margin: 0;
-    color: $white;
-    -webkit-text-stroke: 0.3px $black;
-  }
-
-  .topMenu-sort {
-    color: $white;
-  }
-
-  .topMenu-user {
-
-    .mat-button {
+    .list-task {
+      list-style-type: none;
       padding: 0;
-    }
 
-    .btn-profile {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      li {
+        display: flex;
+        flex-direction: column;
+        font-family: $font-form;
+        background-color: $light-grey;
+        opacity: 0.9;
+        padding: 10px;
+        margin-bottom: 10px;
+
+        input {
+          background-color: transparent;
+          border: none;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 15px;
+          color: $dark-blue;
+        }
+      }
+      textarea {
+        text-align: justify;
+        font-family: $font-form;
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        resize: none;
+      }
+
+      textarea::-webkit-scrollbar-track {
+        border-radius: 3px;
+        background-color: $light-grey;
+      }
+
+      textarea::-webkit-scrollbar {
+        height: 10px;
+        width: 7px;
+      }
+
+      textarea::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 6px $rgba-dark;
+        background-color: $dark-blue;
+      }
+
+      p {
+        color: $red;
+        font-weight: bold;
+      }
+
+      footer {
+        text-transform: uppercase;display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    button {
+      color: $blue;
     }
   }
 }

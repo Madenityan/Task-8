@@ -1,46 +1,27 @@
 <div class="wrapper-to-do">
   <div class="container-to-do">
-    <header class="topMenu">
-      <h1>
-        My to Do list
-      </h1>
-      <div class="topMenu-sort">
-        <div class="sort-btn">
-          <span>Sort:</span>
-          <button mat-icon-button>
-            <mat-icon>arrow_downward</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>arrow_upward</mat-icon>
-          </button>
-        </div>
-      </div>
-      <div class="topMenu-filter">
-        <mat-form-field>
-          <label>
-            <input matInput type="text" placeholder="Search for">
-          </label>
-        </mat-form-field>
-      </div>
-      <div class="topMenu-user">
-        <button mat-button [matMenuTriggerFor]="menu">
-          <img class="btn-profile" src="../../../assets/images/user.jpg" alt="user">
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="regirect()">Profile</button>
-          <button mat-menu-item (click)="clearLocalStorage()">Log Out</button>
-        </mat-menu>
-      </div>
-    </header>
+    <app-header></app-header>
     <div class="wrapper-main">
       <div class="main">
-        <div>
-          <app-title-to-do *ngFor="let title of lists;"></app-title-to-do>
-        </div>
+        <ul class="list-task" >
+          <li *ngFor="let item of lists" data-id={{item._id}}>
+            <label>
+              <input type="text" [(ngModel)]="item.title" placeholder="Title ..." value="{{item.title}}">
+            </label>
+            <label>
+              <textarea cols="40" rows="10" placeholder="Enter task ..." [(ngModel)]="item.description">{{item.description}}</textarea>
+            </label>
+            <footer>
+              <p>Status: {{item.status}}</p>
+              <button *ngIf=!item._id  mat-button type="button" (click)="saveTask(item)">Save</button>
+              <button type="button" mat-icon-button (click)="removeTask(item._id, item)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </footer>
+          </li>
+        </ul>
       </div>
-      <div>
-        <button class="btn-add-list" mat-button mat-raised-button type="button" (click)="addNewTitle()"> + Add another list</button>
-      </div>
-  </div>
+      <button mat-button mat-raised-button type="button" (click)="addNewTask()"> + Add another card</button>
+    </div>
   </div>
 </div>

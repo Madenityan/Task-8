@@ -45,10 +45,6 @@ export class HttpService {
     return this.http.put(getUrl('user'), params, options);
   }
 
-  // createTList(params) {
-  //   return this.http.get(getUrl('todolist'), params);
-  // }
-
   public get(path: string, options?: {}): Observable<any> {
     options = Object.assign({}, {headers: this.headers}, options);
     return this.http.get(`${this.baseUrl}${path}`, options);
@@ -60,5 +56,14 @@ export class HttpService {
     }
     options = Object.assign({}, {headers: this.headers}, options);
     return this.http.post(`${this.baseUrl}${path}`, body, options);
+  }
+
+  public put(path: string, body: any | null, options?: {}): Observable<any> {
+    options = Object.assign({}, {headers: this.headers}, options);
+    return this.http.put(`${this.baseUrl}${path}`, body, options);
+  }
+
+  public delete(url, options): any {
+    return this.http.request('delete', `${this.baseUrl}${url}`, options);
   }
 }
