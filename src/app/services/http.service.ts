@@ -9,7 +9,6 @@ import {environment} from '../../environments/environment';
 })
 
 export class HttpService {
-  // constructor(private http: HttpClient) {}
 
   private headers: HttpHeaders;
   private baseUrl = environment.baseUrl;

@@ -32,6 +32,12 @@
         padding: 10px;
         margin-bottom: 10px;
 
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
         input {
           background-color: transparent;
           border: none;
@@ -69,16 +75,24 @@
       p {
         color: $red;
         font-weight: bold;
+        font-size: 13px;
       }
 
       footer {
         text-transform: uppercase;display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .btn-update {
+          background-color: transparent;
+          border: none;
+          outline: none;
+        }
       }
     }
     button {
       color: $blue;
+      cursor: pointer;
     }
   }
 }

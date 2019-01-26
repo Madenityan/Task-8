@@ -5,15 +5,22 @@
       <div class="main">
         <ul class="list-task" >
           <li *ngFor="let item of lists" data-id={{item._id}}>
-            <label>
-              <input type="text" [(ngModel)]="item.title" placeholder="Title ..." value="{{item.title}}">
-            </label>
+            <header>
+              <label>
+                <input type="text" [(ngModel)]="item.title" placeholder="Title ..." value="{{item.title}}">
+              </label>
+              <button mat-button type="button" class="btn-update" (click)="updateTask(item._id, item)">
+                <i class="material-icons">
+                  create
+                </i>
+              </button>
+            </header>
             <label>
               <textarea cols="40" rows="10" placeholder="Enter task ..." [(ngModel)]="item.description">{{item.description}}</textarea>
             </label>
             <footer>
               <p>Status: {{item.status}}</p>
-              <button *ngIf=!item._id  mat-button type="button" (click)="saveTask(item)">Save</button>
+              <button *ngIf=!item._id  mat-icon-button type="button" (click)="saveTask(item)">Save</button>
               <button type="button" mat-icon-button (click)="removeTask(item._id, item)">
                 <mat-icon>clear</mat-icon>
               </button>
