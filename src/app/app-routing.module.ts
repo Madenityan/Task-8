@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {SignupPage} from './pages/signup/signup.page';
-import {ToDoListPage} from './pages/to-do-list/to-do-list.page';
-import {SigninPage} from './pages/signin/signin.page';
+import {SignupPage} from './components/signup/signup.page';
+import {ToDoListPage} from './components/to-do-list/to-do-list.page';
+import {SigninPage} from './components/signin/signin.page';
 import {AuthGuard} from './auth/auth.guard';
-import {UserProfilePage} from './pages/user-profile/user-profile.page';
+import {UserProfilePage} from './components/user-profile/user-profile.page';
 
 const routes: Routes = [
   { path: '',

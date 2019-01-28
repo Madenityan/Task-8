@@ -4,7 +4,6 @@ import { HttpService} from '../../services/http.service';
 import {UserForm} from '../../models/userForm';
 import {Router} from '@angular/router';
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -28,7 +27,6 @@ export class SignupPage implements OnInit {
   }
 
   public submit() {
-    console.log(this.signUpForm, this.signUpForm.value);
     this.httpService.registration(this.signUpForm.value).subscribe((data: {token: string}) => {
       if (data.token) {
         this.router.navigate(['/signin']);

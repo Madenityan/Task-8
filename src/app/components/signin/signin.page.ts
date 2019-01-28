@@ -30,7 +30,6 @@ export class SigninPage implements OnInit {
   submitLogin() {
     this.httpService.login(this.signInForm.value).subscribe(
       (data: {token: string}) => {
-        console.log(data);
         if (data.token) {
           this.saveToken(data);
           this.router.navigate(['/to-do-list']);

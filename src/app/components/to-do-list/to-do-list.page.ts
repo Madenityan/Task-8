@@ -47,7 +47,7 @@ export class ToDoListPage implements OnInit {
   addNewTask() {
     const token = localStorage.getItem('token');
 
-    this.lists.push({
+    this.lists.unshift({
       userId: token,
       title: '',
       description: '',
@@ -66,6 +66,11 @@ export class ToDoListPage implements OnInit {
 
   removeTask(id, item) {
     const options = this.getOptions();
+    this.lists.forEach(function(i, index, object) {
+      if (i._id === item._id) {
+        object.splice(index, 1);
+      }
+    });
 
     this.httpService.delete('todolist/' + id, options).subscribe((data => {
       this.lists.forEach(function(i, index, object) {
@@ -83,5 +88,29 @@ export class ToDoListPage implements OnInit {
 
     this.httpService.put('todolist/' + id, body, options).subscribe((data => {
     }));
+  }
+
+  sortAsc(): void {
+    this.lists.sort((a, b) => {
+      if (a.title < b.title) {
+        return -1;
+      }
+      if (a.title > b.title) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  sortDesc(): void {
+    this.lists.sort((a, b) => {
+      if (a.title > b.title) {
+        return -1;
+      }
+      if (a.title < b.title) {
+        return 1;
+      }
+      return 0;
+    });
   }
 }

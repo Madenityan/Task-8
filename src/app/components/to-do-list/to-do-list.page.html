@@ -4,6 +4,17 @@
       <h1>
         My to Do list
       </h1>
+      <div class="topMenu-sort">
+        <div class="sort-btn">
+          <span>Sort:</span>
+          <button mat-icon-button (click)="sortAsc()">
+            <mat-icon>arrow_downward</mat-icon>
+          </button>
+          <button mat-icon-button (click)="sortDesc()">
+            <mat-icon>arrow_upward</mat-icon>
+          </button>
+        </div>
+      </div>
       <div class="topMenu-filter">
         <mat-form-field>
           <label>
@@ -49,7 +60,7 @@
           <li class="no-elements" *ngIf="(lists | filter: titleTask).length === 0">No elements</li>
         </ul>
       </div>
-      <button mat-button mat-raised-button type="button" (click)="addNewTask()"> + Add another card</button>
+      <button *ngIf=!titleTask mat-button mat-raised-button type="button" (click)="addNewTask()"> + Add another card</button>
     </div>
   </div>
 </div>

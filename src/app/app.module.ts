@@ -4,15 +4,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ToDoListPage } from './pages/to-do-list/to-do-list.page';
+import { ToDoListPage } from './components/to-do-list/to-do-list.page';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { SignupPage } from './pages/signup/signup.page';
-import { SigninPage } from './pages/signin/signin.page';
+import { SignupPage } from './components/signup/signup.page';
+import { SigninPage } from './components/signin/signin.page';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/http.service';
 import {AuthGuard} from './auth/auth.guard';
-import { UserProfilePage } from './pages/user-profile/user-profile.page';
+import { UserProfilePage } from './components/user-profile/user-profile.page';
 import {FilterPipe} from './pipes/filter.pipe';
 
 @NgModule({

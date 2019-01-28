@@ -1,4 +1,4 @@
-@import "../../../assets/scss/_variables";
+@import "../../../assets/scss/variables";
 
 .wrapper-to-do {
 
@@ -20,6 +20,10 @@
         margin: 0;
         color: $white;
         -webkit-text-stroke: 0.3px $black;
+      }
+
+      .topMenu-sort {
+        color: $white;
       }
 
       .topMenu-user {
