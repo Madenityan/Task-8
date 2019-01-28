@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
 import {HttpService} from '../../services/http.service';
@@ -11,8 +11,18 @@ import {HttpService} from '../../services/http.service';
 export class ToDoListPage implements OnInit {
 
   lists = [];
+  titleTask = '';
 
   constructor(private router: Router, private httpService:HttpService) { }
+
+  clearLocalStorage() {
+    localStorage.clear();
+    this.router.navigate(['/signin']);
+  }
+
+  regirect() {
+    this.router.navigate(['/profile']);
+  }
 
   getOptions() {
     const token = localStorage.getItem('token');
@@ -27,7 +37,6 @@ export class ToDoListPage implements OnInit {
 
   ngOnInit() {
     const options = this.getOptions();
-
     this.httpService.get('todolist', options).subscribe((data => {
       const lists = [];
       this.lists = data;

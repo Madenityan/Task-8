@@ -13,7 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/http.service';
 import {AuthGuard} from './auth/auth.guard';
 import { UserProfilePage } from './pages/user-profile/user-profile.page';
-import { HeaderComponent } from './components/header/header.component';
+import {FilterPipe} from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
     SignupPage,
     SigninPage,
     UserProfilePage,
-    HeaderComponent
+    FilterPipe
   ],
   imports: [
     BrowserModule,

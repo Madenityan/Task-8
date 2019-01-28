@@ -1,10 +1,30 @@
 <div class="wrapper-to-do">
   <div class="container-to-do">
-    <app-header></app-header>
+    <header class="topMenu">
+      <h1>
+        My to Do list
+      </h1>
+      <div class="topMenu-filter">
+        <mat-form-field>
+          <label>
+            <input matInput type="text" placeholder="Search for ..." [(ngModel)]="titleTask"/>
+          </label>
+        </mat-form-field>
+      </div>
+      <div class="topMenu-user">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <img class="btn-profile" src="../../../assets/images/user.jpg" alt="user">
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="regirect()">Profile</button>
+          <button mat-menu-item (click)="clearLocalStorage()">Log Out</button>
+        </mat-menu>
+      </div>
+    </header>
     <div class="wrapper-main">
       <div class="main">
         <ul class="list-task" >
-          <li *ngFor="let item of lists" data-id={{item._id}}>
+          <li *ngFor="let item of lists | filter: titleTask" data-id={{item._id}}>
             <header>
               <label>
                 <input type="text" [(ngModel)]="item.title" placeholder="Title ..." value="{{item.title}}">
@@ -26,6 +46,7 @@
               </button>
             </footer>
           </li>
+          <li class="no-elements" *ngIf="(lists | filter: titleTask).length === 0">No elements</li>
         </ul>
       </div>
       <button mat-button mat-raised-button type="button" (click)="addNewTask()"> + Add another card</button>
