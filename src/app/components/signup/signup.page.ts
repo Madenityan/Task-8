@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpService} from '../../services/http.service';
 import {UserForm} from '../../models/userForm';
 import {Router} from '@angular/router';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -26,8 +27,20 @@ export class SignupPage implements OnInit {
     });
   }
 
+  getOptions() {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return options;
+  }
+
   public submit() {
-    this.httpService.registration(this.signUpForm.value).subscribe((data: {token: string}) => {
+    const body = this.signUpForm.value;
+    const options = this.getOptions();
+
+    this.httpService.post('registration', body, options).subscribe((data: {token: string}) => {
       if (data.token) {
         this.router.navigate(['/signin']);
       }

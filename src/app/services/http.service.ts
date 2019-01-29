@@ -22,6 +22,7 @@ export class HttpService {
   }
   private setOptionsToHeader(options): any {
     Object.keys(options).forEach(key => {
+      // console.log(key, options[key]);
       this.headers.append(key, options[key]);
     });
   }
@@ -32,17 +33,17 @@ export class HttpService {
     this.headers = headers;
   }
 
-  registration(params) {
-    return this.http.post(getUrl('registration'), params);
-  }
+  // registration(params) {
+  //   return this.http.post(getUrl('registration'), params);
+  // }
 
-  login(params) {
-    return this.http.post(getUrl('login'), params);
-  }
+  // login(params) {
+  //   return this.http.post(getUrl('login'), params);
+  // }
 
-  updateUserInfo(params, options) {
-    return this.http.put(getUrl('user'), params, options);
-  }
+  // updateUserInfo(params, options) {
+  //   return this.http.put(getUrl('user'), params, options);
+  // }
 
   public get(path: string, options?: {}): Observable<any> {
     options = Object.assign({}, {headers: this.headers}, options);

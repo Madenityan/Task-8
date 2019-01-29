@@ -84,7 +84,7 @@ export class ToDoListPage implements OnInit {
   updateTask(id, item) {
     const body = item;
     const options = this.getOptions();
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     this.httpService.put('todolist/' + id, body, options).subscribe((data => {
     }));

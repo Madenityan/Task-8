@@ -25,13 +25,14 @@ export class UserProfilePage implements OnInit {
   changeProfile() {
     console.log(this.profileForm, this.profileForm.value);
     const token = localStorage.getItem('token');
+    const body = this.profileForm.value;
     const options = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'x-apikey': token
       })
     };
-    this.httpService.updateUserInfo(this.profileForm.value, options).subscribe((data) => {
+    this.httpService.put('user', body, options).subscribe((data) => {
       console.log(data);
     },
       error => console.log(error)
