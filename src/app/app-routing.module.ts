@@ -8,7 +8,7 @@ import {UserProfilePage} from './components/user-profile/user-profile.page';
 
 const routes: Routes = [
   { path: '',
-    redirectTo: 'signup',
+    redirectTo: 'to-do-list',
     pathMatch: 'full'
   },
   {

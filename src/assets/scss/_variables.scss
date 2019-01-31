@@ -2,14 +2,19 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
 
-//Fonts variable
+//Fonts variables
 $font-title: 'Pacifico', cursive;
 $font-form: 'Nunito Sans', sans-serif;
 
+//responsive
+$break-small: 500px;
+$break-large: 600px;
+$break-extra-large: 1024px;
+
 //Colors
-$white: #fff;
 $black:#000000;
 $black-2:#17394d;
+$white: #fff;
 $light-grey: #dfe3e6;
 $border-profile:#dadce0;
 $dark-grey: #6b808c;

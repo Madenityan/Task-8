@@ -1,4 +1,5 @@
 @import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
 
 .wrapper-profile {
   font-family: $font-form;
@@ -22,6 +23,10 @@
     }
 
     .form-profile {
+
+      @include respond-to(handhelds) {
+       padding: 15px;
+      }
 
       .profile-data {
         margin-bottom: 20px;

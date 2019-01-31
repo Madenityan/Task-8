@@ -1,4 +1,5 @@
 @import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
 
 .wrapper-to-do {
 
@@ -7,12 +8,28 @@
     background-size: cover;
     height: 100vh;
 
+    @include respond-to(handhelds) {
+      height: 100%;
+    }
+
+    @include respond-to(medium-screens) {
+      height: 100%;
+    }
+
     .topMenu {
       background: rgba(0, 0, 0, .35);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 15px;
+
+      @include respond-to(handhelds) {
+        flex-wrap: wrap;
+      }
+
+      @include respond-to(medium-screens) {
+        flex-wrap: wrap;
+      }
 
       h1 {
         font-family: $font-title;
@@ -47,14 +64,40 @@
     padding: 10px;
     overflow-x: auto;
     height: calc(100vh - 90px);
+
+    @include respond-to(handhelds) {
+      padding: 0;
+      flex-direction: column-reverse;
+    }
+
+    @include respond-to(medium-screens) {
+      padding: 0;
+      flex-direction: column-reverse;
+    }
   }
 
   .main {
     padding: 0 30px;
 
+    @include respond-to(handhelds) {
+      padding: 0 10px;
+    }
+
+    @include respond-to(medium-screens) {
+      padding: 0 10px;
+    }
+
     .list-task {
       list-style-type: none;
       padding: 0;
+
+      @include respond-to(handhelds) {
+        padding-top: 16px;
+      }
+
+      @include respond-to(medium-screens) {
+        padding-top: 16px;
+      }
 
       li {
         display: flex;
@@ -64,6 +107,11 @@
         opacity: 0.9;
         padding: 10px;
         margin-bottom: 10px;
+
+        @include respond-to(handhelds) {
+          padding: 5px;
+        }
+
 
         header {
           display: flex;
