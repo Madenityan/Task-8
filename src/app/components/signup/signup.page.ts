@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpService} from '../../services/http.service';
 import {UserForm} from '../../models/userForm';
@@ -10,7 +10,7 @@ import {HttpHeaders} from '@angular/common/http';
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss']
 })
-export class SignupPage implements OnInit {
+export class SignupPage implements OnInit, OnDestroy {
 
   public signUpForm: any = FormGroup;
   public user: any = UserForm;
@@ -26,6 +26,7 @@ export class SignupPage implements OnInit {
     });
   }
 
+  // save token and headers
   getOptions(): object {
     const options = {
       headers: new HttpHeaders({
@@ -35,6 +36,7 @@ export class SignupPage implements OnInit {
     return options;
   }
 
+  // sent post request
   public submit(): void {
     const body: any = this.signUpForm.value;
     const options: any = this.getOptions();
@@ -44,5 +46,9 @@ export class SignupPage implements OnInit {
         this.router.navigate(['/signin']);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.signUpForm.unsubscribe();
   }
 }

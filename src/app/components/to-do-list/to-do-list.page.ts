@@ -15,6 +15,8 @@ export class ToDoListPage implements OnInit {
 
   constructor(private router: Router, private httpService: HttpService) { }
 
+  // Redirect to pages
+
   clearLocalStorage(): void {
     localStorage.clear();
     this.router.navigate(['/signin']);
@@ -32,6 +34,7 @@ export class ToDoListPage implements OnInit {
     this.router.navigate(['/signup']);
   }
 
+  // Saved token and headers
   getOptions(): any {
     const token: string = localStorage.getItem('token');
     const options: object = {
@@ -51,6 +54,7 @@ export class ToDoListPage implements OnInit {
     }));
   }
 
+  // add new item
   addNewTask(): void {
     const token: string = localStorage.getItem('token');
     this.lists.unshift({
@@ -62,6 +66,7 @@ export class ToDoListPage implements OnInit {
     });
   }
 
+  // save item
   saveTask(item): void {
     const body: any = item;
     const options: any = this.getOptions();
@@ -69,6 +74,7 @@ export class ToDoListPage implements OnInit {
     }));
   }
 
+// remove items
   removeTask(id, item): void {
     const options: any = this.getOptions();
     this.lists.forEach(function(i, index, object) {
@@ -85,6 +91,7 @@ export class ToDoListPage implements OnInit {
     }));
   }
 
+// update item
   updateTask(id, item): void {
     const body: any = item;
     delete body['_id'];
@@ -93,6 +100,7 @@ export class ToDoListPage implements OnInit {
     }));
   }
 
+// sort item
   sortAsc(): any {
     this.lists.sort((a, b) => {
       if (a.title < b.title) {

@@ -11,7 +11,7 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class UserProfilePage implements OnInit {
 
-  public profileForm: FormGroup;
+  public profileForm: any = FormGroup;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private httpService: HttpService) { }
 
@@ -23,10 +23,9 @@ export class UserProfilePage implements OnInit {
   }
 
   changeProfile(): void {
-    console.log(this.profileForm, this.profileForm.value);
-    const token = localStorage.getItem('token');
-    const body = this.profileForm.value;
-    const options = {
+    const token: string = localStorage.getItem('token');
+    const body: any = this.profileForm.value;
+    const options: object = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'x-apikey': token

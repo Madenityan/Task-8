@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserForm} from '../../models/userForm';
 import {Router} from '@angular/router';
@@ -10,7 +10,7 @@ import {HttpHeaders} from '@angular/common/http';
   templateUrl: './signin.page.html',
   styleUrls: ['./signin.page.scss']
 })
-export class SigninPage implements OnInit {
+export class SigninPage implements OnInit, OnDestroy {
 
   public signInForm: any = FormGroup;
   public user: any = UserForm;
@@ -37,6 +37,7 @@ export class SigninPage implements OnInit {
     localStorage.setItem('token', data.token);
   }
 
+  // sent post request
   submitLogin(): void {
     const body: any = this.signInForm.value;
     const options: any = this.getOptions();
@@ -47,5 +48,9 @@ export class SigninPage implements OnInit {
         this.router.navigate(['/to-do-list']);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.signInForm.unsubscribe();
   }
 }
