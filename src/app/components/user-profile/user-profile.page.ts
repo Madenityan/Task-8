@@ -22,7 +22,7 @@ export class UserProfilePage implements OnInit {
     });
   }
 
-  changeProfile() {
+  changeProfile(): void {
     console.log(this.profileForm, this.profileForm.value);
     const token = localStorage.getItem('token');
     const body = this.profileForm.value;

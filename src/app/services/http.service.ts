@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {getUrl} from '../../api/get-url';
 import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 
@@ -10,8 +9,8 @@ import {environment} from '../../environments/environment';
 
 export class HttpService {
 
-  private headers: HttpHeaders;
-  private baseUrl = environment.baseUrl;
+  private headers: any = HttpHeaders;
+  private baseUrl: any = environment.baseUrl;
 
   static objectToFormData(object: any): HttpParams {
     let params = new HttpParams();
@@ -22,7 +21,6 @@ export class HttpService {
   }
   private setOptionsToHeader(options): any {
     Object.keys(options).forEach(key => {
-      // console.log(key, options[key]);
       this.headers.append(key, options[key]);
     });
   }
@@ -32,18 +30,6 @@ export class HttpService {
     headers = headers.append('Accept', 'application/json');
     this.headers = headers;
   }
-
-  // registration(params) {
-  //   return this.http.post(getUrl('registration'), params);
-  // }
-
-  // login(params) {
-  //   return this.http.post(getUrl('login'), params);
-  // }
-
-  // updateUserInfo(params, options) {
-  //   return this.http.put(getUrl('user'), params, options);
-  // }
 
   public get(path: string, options?: {}): Observable<any> {
     options = Object.assign({}, {headers: this.headers}, options);

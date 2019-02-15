@@ -10,21 +10,29 @@ import {HttpService} from '../../services/http.service';
 })
 export class ToDoListPage implements OnInit {
 
-  lists = [];
+  public lists: Array<any> = [];
   titleTask = '';
 
-  constructor(private router: Router, private httpService:HttpService) { }
+  constructor(private router: Router, private httpService: HttpService) { }
 
-  clearLocalStorage() {
+  clearLocalStorage(): void {
     localStorage.clear();
     this.router.navigate(['/signin']);
   }
 
-  regirect() {
+  regirectToProfile(): void {
     this.router.navigate(['/profile']);
   }
 
-  getOptions() {
+  regirectToLogin(): void {
+    this.router.navigate(['/signin']);
+  }
+
+  regirectToRegister(): void {
+    this.router.navigate(['/signup']);
+  }
+
+  getOptions(): any {
     const token = localStorage.getItem('token');
     const options = {
       headers: new HttpHeaders({
@@ -35,16 +43,15 @@ export class ToDoListPage implements OnInit {
     return options;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     const options = this.getOptions();
     this.httpService.get('todolist', options).subscribe((data => {
       const lists = [];
       this.lists = data;
-      console.log(data);
     }));
   }
 
-  addNewTask() {
+  addNewTask(): void {
     const token = localStorage.getItem('token');
 
     this.lists.unshift({
@@ -56,7 +63,7 @@ export class ToDoListPage implements OnInit {
     });
   }
 
-  saveTask(item) {
+  saveTask(item): void {
     const body = item;
     const options = this.getOptions();
 
@@ -64,14 +71,13 @@ export class ToDoListPage implements OnInit {
     }));
   }
 
-  removeTask(id, item) {
+  removeTask(id, item): void {
     const options = this.getOptions();
     this.lists.forEach(function(i, index, object) {
       if (i._id === item._id) {
         object.splice(index, 1);
       }
     });
-
     this.httpService.delete('todolist/' + id, options).subscribe((data => {
       this.lists.forEach(function(i, index, object) {
         if (i._id === item._id) {
@@ -81,13 +87,11 @@ export class ToDoListPage implements OnInit {
     }));
   }
 
-  updateTask(id, item) {
+  updateTask(id, item): void {
     const body = item;
     delete body['_id'];
     const options = this.getOptions();
-
     this.httpService.put('todolist/' + id, body, options).subscribe((data => {
-
     }));
   }
 

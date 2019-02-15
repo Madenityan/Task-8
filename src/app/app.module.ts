@@ -11,7 +11,7 @@ import { SignupPage } from './components/signup/signup.page';
 import { SigninPage } from './components/signin/signin.page';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/http.service';
-import {AuthGuard} from './auth/auth.guard';
+import {AuthGuard} from './guards/auth.guard';
 import { UserProfilePage } from './components/user-profile/user-profile.page';
 import {FilterPipe} from './pipes/filter.pipe';
 

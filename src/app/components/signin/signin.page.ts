@@ -38,17 +38,10 @@ export class SigninPage implements OnInit {
   }
 
   submitLogin() {
-    // this.httpService.login(this.signInForm.value).subscribe(
-    //   (data: {token: string}) => {
-    //     if (data.token) {
-    //       this.saveToken(data);
-    //       this.router.navigate(['/to-do-list']);
-    //     }
-    //   });
     const body = this.signInForm.value;
     const options = this.getOptions();
 
-    this.httpService.post('registration', body, options).subscribe((data: {token: string}) => {
+    this.httpService.post('login', body, options).subscribe((data: {token: string}) => {
       if (data.token) {
         this.saveToken(data);
         this.router.navigate(['/to-do-list']);

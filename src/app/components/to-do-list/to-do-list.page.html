@@ -27,7 +27,9 @@
           <img class="btn-profile" src="../../../assets/images/user.jpg" alt="user">
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="regirect()">Profile</button>
+          <button mat-menu-item (click)="regirectToProfile()">Profile</button>
+          <button mat-menu-item (click)="regirectToLogin()">Log in</button>
+          <button mat-menu-item (click)="regirectToRegister()">Registration</button>
           <button mat-menu-item (click)="clearLocalStorage()">Log Out</button>
         </mat-menu>
       </div>

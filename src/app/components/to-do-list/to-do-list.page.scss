@@ -66,13 +66,13 @@
     height: calc(100vh - 90px);
 
     @include respond-to(handhelds) {
+      flex-wrap: wrap;
       padding: 0;
-      flex-direction: column-reverse;
+      justify-content: space-evenly;
     }
 
     @include respond-to(medium-screens) {
       padding: 0;
-      flex-direction: column-reverse;
     }
   }
 
@@ -80,24 +80,16 @@
     padding: 0 30px;
 
     @include respond-to(handhelds) {
-      padding: 0 10px;
+      padding: 0 10px 10px;
     }
 
     @include respond-to(medium-screens) {
-      padding: 0 10px;
+      padding: 0 10px 10px;
     }
 
     .list-task {
       list-style-type: none;
       padding: 0;
-
-      @include respond-to(handhelds) {
-        padding-top: 16px;
-      }
-
-      @include respond-to(medium-screens) {
-        padding-top: 16px;
-      }
 
       li {
         display: flex;
