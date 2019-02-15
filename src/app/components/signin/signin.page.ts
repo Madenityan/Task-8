@@ -12,8 +12,8 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class SigninPage implements OnInit {
 
-  public signInForm: FormGroup;
-  public user: UserForm;
+  public signInForm: any = FormGroup;
+  public user: any = UserForm;
 
   constructor(private router: Router, private httpService: HttpService, private formBuilder: FormBuilder) { }
 
@@ -24,8 +24,8 @@ export class SigninPage implements OnInit {
     });
   }
 
-  getOptions() {
-    const options = {
+  getOptions(): any {
+    const options: object = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
@@ -33,13 +33,13 @@ export class SigninPage implements OnInit {
     return options;
   }
 
-  saveToken(data) {
+  saveToken(data): void {
     localStorage.setItem('token', data.token);
   }
 
-  submitLogin() {
-    const body = this.signInForm.value;
-    const options = this.getOptions();
+  submitLogin(): void {
+    const body: any = this.signInForm.value;
+    const options: any = this.getOptions();
 
     this.httpService.post('login', body, options).subscribe((data: {token: string}) => {
       if (data.token) {

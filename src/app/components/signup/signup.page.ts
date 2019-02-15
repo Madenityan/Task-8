@@ -12,12 +12,11 @@ import {HttpHeaders} from '@angular/common/http';
 })
 export class SignupPage implements OnInit {
 
-  public signUpForm: FormGroup;
-  public user: UserForm;
+  public signUpForm: any = FormGroup;
+  public user: any = UserForm;
 
   constructor(private router: Router, private httpService: HttpService, private formBuilder: FormBuilder) { }
   ngOnInit() {
-
     this.signUpForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
@@ -27,7 +26,7 @@ export class SignupPage implements OnInit {
     });
   }
 
-  getOptions() {
+  getOptions(): object {
     const options = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
@@ -36,9 +35,9 @@ export class SignupPage implements OnInit {
     return options;
   }
 
-  public submit() {
-    const body = this.signUpForm.value;
-    const options = this.getOptions();
+  public submit(): void {
+    const body: any = this.signUpForm.value;
+    const options: any = this.getOptions();
 
     this.httpService.post('registration', body, options).subscribe((data: {token: string}) => {
       if (data.token) {

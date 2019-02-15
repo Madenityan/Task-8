@@ -11,7 +11,7 @@ import {HttpService} from '../../services/http.service';
 export class ToDoListPage implements OnInit {
 
   public lists: Array<any> = [];
-  titleTask = '';
+  public titleTask: string = '';
 
   constructor(private router: Router, private httpService: HttpService) { }
 
@@ -33,8 +33,8 @@ export class ToDoListPage implements OnInit {
   }
 
   getOptions(): any {
-    const token = localStorage.getItem('token');
-    const options = {
+    const token: string = localStorage.getItem('token');
+    const options: object = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'x-apikey': token
@@ -44,16 +44,15 @@ export class ToDoListPage implements OnInit {
   }
 
   ngOnInit(): void {
-    const options = this.getOptions();
+    const options: any = this.getOptions();
     this.httpService.get('todolist', options).subscribe((data => {
-      const lists = [];
+      const lists: Array<object> = [];
       this.lists = data;
     }));
   }
 
   addNewTask(): void {
-    const token = localStorage.getItem('token');
-
+    const token: string = localStorage.getItem('token');
     this.lists.unshift({
       userId: token,
       title: '',
@@ -64,15 +63,14 @@ export class ToDoListPage implements OnInit {
   }
 
   saveTask(item): void {
-    const body = item;
-    const options = this.getOptions();
-
+    const body: any = item;
+    const options: any = this.getOptions();
     this.httpService.post('todolist', body, options).subscribe((data => {
     }));
   }
 
   removeTask(id, item): void {
-    const options = this.getOptions();
+    const options: any = this.getOptions();
     this.lists.forEach(function(i, index, object) {
       if (i._id === item._id) {
         object.splice(index, 1);
@@ -88,14 +86,14 @@ export class ToDoListPage implements OnInit {
   }
 
   updateTask(id, item): void {
-    const body = item;
+    const body: any = item;
     delete body['_id'];
-    const options = this.getOptions();
+    const options: any = this.getOptions();
     this.httpService.put('todolist/' + id, body, options).subscribe((data => {
     }));
   }
 
-  sortAsc(): void {
+  sortAsc(): any {
     this.lists.sort((a, b) => {
       if (a.title < b.title) {
         return -1;
@@ -107,7 +105,7 @@ export class ToDoListPage implements OnInit {
     });
   }
 
-  sortDesc(): void {
+  sortDesc(): any {
     this.lists.sort((a, b) => {
       if (a.title > b.title) {
         return -1;
