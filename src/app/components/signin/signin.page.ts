@@ -15,18 +15,20 @@ export class SigninPage implements OnInit, OnDestroy {
 
   public signInForm: any = FormGroup;
   public user: any = UserForm;
-  subscriptions: Subscription[];
+  public subscriptions: Array<Subscription> = [];
 
-  constructor(private router: Router,
-              private httpService: HttpService,
-              private formBuilder: FormBuilder) {
-  this.subscriptions = [];
-  }
+  constructor(private router: Router, private httpService: HttpService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.map(subscription => {
+      subscription.unsubscribe();
     });
   }
 
@@ -48,15 +50,13 @@ export class SigninPage implements OnInit, OnDestroy {
     const body: any = this.signInForm.value;
     const options: any = this.getOptions();
 
-    this.httpService.post('login', body, options).subscribe((data: {token: string}) => {
-      if (data.token) {
-        this.saveToken(data);
-        this.router.navigate(['/to-do-list']);
-      }
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.map(subscription => subscription.unsubscribe());
+    this.subscriptions.push(
+      this.httpService.post('login', body, options).subscribe((data: {token: string}) => {
+        if (data.token) {
+          this.saveToken(data);
+          this.router.navigate(['/to-do-list']);
+        }
+      })
+    );
   }
 }

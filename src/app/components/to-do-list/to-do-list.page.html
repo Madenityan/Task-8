@@ -42,7 +42,7 @@
               <label>
                 <input type="text" [(ngModel)]="item.title" placeholder="Title ..." value="{{item.title}}">
               </label>
-              <button mat-button type="button" class="btn-update" (click)="updateTask(item._id, item)">
+              <button mat-button type="button" class="btn-update" (click)="updateTask(item)">
                 <i class="material-icons">
                   create
                 </i>
@@ -53,7 +53,7 @@
             </label>
             <footer>
               <p>Status: {{item.status}}</p>
-              <button *ngIf=!item._id  mat-icon-button type="button" (click)="saveTask(item)">Save</button>
+              <button *ngIf='!item._id'  mat-icon-button type="button" (click)="saveTask(item)">Save</button>
               <button type="button" mat-icon-button (click)="removeTask(item._id, item)">
                 <mat-icon>clear</mat-icon>
               </button>

@@ -15,13 +15,9 @@ export class SignupPage implements OnInit, OnDestroy {
 
   public signUpForm: any = FormGroup;
   public user: any = UserForm;
-  subscriptions: Subscription[];
+  public subscriptions: Array<Subscription> = [];
 
-  constructor(private router: Router,
-              private httpService: HttpService,
-              private formBuilder: FormBuilder) {
-    this.subscriptions = [];
-  }
+  constructor(private router: Router, private httpService: HttpService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
@@ -30,6 +26,12 @@ export class SignupPage implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.minLength(8)]],
       password: ['', [Validators.required, Validators.minLength(8)]],
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.map(subscription => {
+      subscription.unsubscribe();
     });
   }
 
@@ -48,14 +50,12 @@ export class SignupPage implements OnInit, OnDestroy {
     const body: any = this.signUpForm.value;
     const options: any = this.getOptions();
 
-    this.httpService.post('registration', body, options).subscribe((data: {token: string}) => {
-      if (data.token) {
-        this.router.navigate(['/signin']);
-      }
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.map(subscription => subscription.unsubscribe());
+    this.subscriptions.push(
+      this.httpService.post('registration', body, options).subscribe((data: {token: string}) => {
+        if (data.token) {
+          this.router.navigate(['/signin']);
+        }
+      })
+    );
   }
 }
