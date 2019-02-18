@@ -109,6 +109,7 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+          margin-left: 10px;
         }
 
         input {
@@ -145,16 +146,15 @@
         background-color: $dark-blue;
       }
 
-      p {
-        color: $red;
-        font-weight: bold;
-        font-size: 13px;
-      }
-
       footer {
         text-transform: uppercase;display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-left: 10px;
+
+        input {
+          color: $red;
+        }
 
         .btn-update {
           background-color: transparent;
