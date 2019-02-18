@@ -13,18 +13,20 @@ import {Subscription} from 'rxjs';
 export class UserProfilePage implements OnInit,  OnDestroy {
 
   public profileForm: any = FormGroup;
-  subscriptions: Subscription[];
+  public subscriptions: Array<Subscription> = [];
 
-  constructor(private router: Router,
-              private formBuilder: FormBuilder,
-              private httpService: HttpService) {
-    this.subscriptions = [];
-  }
+  constructor(private router: Router, private formBuilder: FormBuilder, private httpService: HttpService) {}
 
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.map(subscription => {
+      subscription.unsubscribe();
     });
   }
 
@@ -37,11 +39,13 @@ export class UserProfilePage implements OnInit,  OnDestroy {
         'x-apikey': token
       })
     };
-    this.httpService.put('user', body, options).subscribe((data) => {
-      console.log(data);
-    },
-      error => console.log(error)
-      );
+    this.subscriptions.push(
+      this.httpService.put('user', body, options).subscribe((data) => {
+          console.log(data);
+        },
+        error => console.log(error)
+      )
+    );
   }
 
   ngOnDestroy(): void {
