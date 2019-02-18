@@ -4,6 +4,7 @@ import { HttpService} from '../../services/http.service';
 import {UserForm} from '../../models/userForm';
 import {Router} from '@angular/router';
 import {HttpHeaders} from '@angular/common/http';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -14,8 +15,14 @@ export class SignupPage implements OnInit, OnDestroy {
 
   public signUpForm: any = FormGroup;
   public user: any = UserForm;
+  subscriptions: Subscription[];
 
-  constructor(private router: Router, private httpService: HttpService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router,
+              private httpService: HttpService,
+              private formBuilder: FormBuilder) {
+    this.subscriptions = [];
+  }
+
   ngOnInit() {
     this.signUpForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -26,7 +33,7 @@ export class SignupPage implements OnInit, OnDestroy {
     });
   }
 
-  // save token and headers
+  // save headers
   getOptions(): object {
     const options = {
       headers: new HttpHeaders({
@@ -48,7 +55,7 @@ export class SignupPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    this.signUpForm.unsubscribe();
+  ngOnDestroy(): void {
+    this.subscriptions.map(subscription => subscription.unsubscribe());
   }
 }

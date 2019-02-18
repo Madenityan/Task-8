@@ -4,6 +4,7 @@ import {UserForm} from '../../models/userForm';
 import {Router} from '@angular/router';
 import {HttpService} from '../../services/http.service';
 import {HttpHeaders} from '@angular/common/http';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-signin',
@@ -14,8 +15,13 @@ export class SigninPage implements OnInit, OnDestroy {
 
   public signInForm: any = FormGroup;
   public user: any = UserForm;
+  subscriptions: Subscription[];
 
-  constructor(private router: Router, private httpService: HttpService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router,
+              private httpService: HttpService,
+              private formBuilder: FormBuilder) {
+  this.subscriptions = [];
+  }
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
@@ -50,7 +56,7 @@ export class SigninPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    this.signInForm.unsubscribe();
+  ngOnDestroy(): void {
+    this.subscriptions.map(subscription => subscription.unsubscribe());
   }
 }
