@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {HttpService} from '../../services/http.service';
 import {HttpHeaders} from '@angular/common/http';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.page.html',
   styleUrls: ['./user-profile.page.scss']
 })
-export class UserProfilePage implements OnInit {
+export class UserProfilePage implements OnInit,  OnDestroy {
 
   public profileForm: any = FormGroup;
+  subscriptions: Subscription[];
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private httpService: HttpService) { }
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private httpService: HttpService) {
+    this.subscriptions = [];
+  }
 
   ngOnInit() {
     this.profileForm = this.formBuilder.group({
@@ -36,5 +42,9 @@ export class UserProfilePage implements OnInit {
     },
       error => console.log(error)
       );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.map(subscription => subscription.unsubscribe());
   }
 }
